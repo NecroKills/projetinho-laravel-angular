@@ -1,0 +1,23 @@
+<p>
+    Cadastrar
+</p>
+
+<form [formGroup]="paisForm">
+    Nome: <input type="text" formControlName="nome">
+
+    <!-- se caso o paisForm for invalido, só aparece se digitar algo e apagar, ou se ele clicar no campo e passar pro proximo campo -->
+    <span *ngIf="form.nome.invalid && (form.nome.dirty) || form.nome.touched">
+        <span *ngIf="form.nome.errors.required">Campo obrigatório!!!</span>
+    <span *ngIf="form.nome.errors.maxlength">Informe no máximo
+        {{form.nome.errors.maxlength.requiredLength}}
+        caracters!!!</span>
+    </span>
+
+    <hr>
+    <button [disabled]="paisForm.invalid" (click)="onSave(paisForm.value)">Salvar</button>
+    <button routerLink="/pais">Cancelar</button>
+</form>
+
+Formulário inválido: {{paisForm.invalid}}
+
+<hr> {{paisForm.value | json}}

@@ -1,0 +1,13 @@
+<p>
+    Lista de Paises
+</p>
+
+<button routerLink="/pais/novo">Cadastrar</button>
+
+<ul>
+    <li *ngFor="let pais of paises">
+        {{ pais.nome }}
+        <button (click)="onDelete(pais.id)">Deletar</button>
+        <button (click)="onEdit(pais.id)">Editar</button>
+    </li>
+</ul>
